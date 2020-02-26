@@ -41,14 +41,14 @@ def auth():
     else:
         session["username"] = username
         session["password"] = password
-        return redirect(url_for("u", user_id=username))
+        return redirect(url_for("u", user_name=username))
 
 
 @app.route('/u/<user_name>', methods=['get','post'])
 def u(user_name: str):
     # session 无值？？
     # return "welcome "+session["username"]
-    return render_template("test.html",user_name)
+    return render_template("test.html",user_name=user_name)
 
 def test_args(*args, **kwargs):
      return render_template("main.html", title="test_template" , \
