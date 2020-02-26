@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<title>{% block title %}{{title}}{% endblock %}</title>
+</head>
+<body>
+<ul>
+{% for user in args %}
+  <li><a href="{{ user }}">{{ kwargs[user] }}</a></li>
+{% endfor %}
+</ul>
+in template......
+</body>
+</html>
