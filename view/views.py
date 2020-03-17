@@ -5,7 +5,6 @@ from view import views
 from templates import *
 from flask import session
 from flask import redirect,url_for,request
-
 from model.verification_code import verification_code
 from io import StringIO,BytesIO
 
@@ -48,13 +47,13 @@ def auth():
 def u(user_name: str):
     # session 无值？？
     # return "welcome "+session["username"]
-    return render_template("test.html",user_name=user_name)
+    return render_template("main.html",user_name=user_name)
+
 
 def test_args(*args, **kwargs):
-     return render_template("main.html", title="test_template" , \
+     return render_template("main_bak.html", title="test_template" , \
                            users= [{"url": "url1", "username":"u1"}, {"url": "url2", "username":"u2"}])
     #return render_template("args.html", args=args, kwargs=kwargs)
-
 
 
 @app.route('/test_template')
@@ -63,6 +62,7 @@ def test_template():
     return test_args("u1", "u2", u1="url1", u2="url2")
     #return render_template("template_t.html", title="test_template" , \
     #                      users= [{"url": "url1", "username":"u1"}, {"url": "url2", "username":"u2"}])
+
 
 """
 @app.route('/A')
