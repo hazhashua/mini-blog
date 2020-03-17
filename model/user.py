@@ -19,6 +19,10 @@ class User(db.Model):
         self.password = password
 
 
+    def get_all_attribute(self):
+        return {"username": self.username, "password": self.password, \
+                "email": self.email, "id": self.id}
+
     def __repr__(self):
         return "UserL <%r>"%self.username
 

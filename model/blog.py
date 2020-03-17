@@ -1,6 +1,6 @@
 from view.views import app
 from flask_sqlalchemy import SQLAlchemy
-from model.user import db
+from model.user import db,User
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:mysql@47.92.202.163/blog'
 # db = SQLAlchemy(app)
@@ -24,10 +24,17 @@ class Blog(db.Model):
         self.create_date = create_date
         self.modify_date = modify_date
 
-
     def __repr__(self):
         return "Blog: <%d:%r>"%(self.user_id, self.blog_name)
 
 
 if __name__ == "__main__":
-    db.create_all()
+    #db.create_all()
+    user1 = User("u1","xxxx")
+    db.session.add(user1)
+    db.session.commit()
+    u_attributes = user1.get_all_attribute()
+    from datetime import datetime
+    blog = Blog(u_attributes.get("id"),"第一篇博客",datetime.now(),datetime.now(),"-----")
+    db.session.add(blog)
+    db.session.commit()
