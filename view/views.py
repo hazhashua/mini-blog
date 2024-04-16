@@ -8,7 +8,7 @@ from flask import redirect,url_for,request
 from model.verification_code import verification_code
 from io import StringIO,BytesIO
 
-app = Flask(__name__, template_folder='../templates',static_folder="",static_url_path="")
+app = Flask(__name__, template_folder='../templates', static_folder="", static_url_path="")
 app.secret_key = 'djstl'
 
 vc = verification_code(100,30)
